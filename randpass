@@ -2,7 +2,7 @@
 #
 # About
 # -----
-# Generate simple passwords, via /dev/urandom.
+# Generate simple passwords, via /dev/random.
 #
 #
 # License
@@ -18,8 +18,8 @@
 #
 
 
-if [ ! -e /dev/urandom ]; then
-    echo "/dev/urandom isn't available"
+if [ ! -e /dev/random ]; then
+    echo "/dev/random isn't available"
     exit 2
 fi
 
@@ -56,5 +56,5 @@ done
 #
 #  Output the password
 #
-printf "%s\n" $(cat /dev/urandom | env LC_CTYPE=C tr -cd "$cset" | head -c $len )
+printf "%s\n" $(cat /dev/random | env LC_CTYPE=C tr -cd "$cset" | head -c $len )
 
